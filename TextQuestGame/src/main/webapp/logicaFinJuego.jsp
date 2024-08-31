@@ -7,10 +7,8 @@
         <meta charset="UTF-8">
     </head>
     <body>
-        <% String encabezado = (String) session.getAttribute("nombreJugador") + session.getAttribute("mensajeEncabezado"); %>
-        <h2><%= encabezado %></h2>
-        <%-- <h2><%=request.getSession().getAttribute("mensaje")%>!</h2> --%>
-        <h4><c:out value="${mensajeEstado}"/></h4>
+        <h2><c:out value="${nombreJugador}"/> <c:out value="${mensajeEncabezado}"/></h2>
+        <h3><c:out value="${mensajeEstado}"/></h4>
         <form method="GET" action="/TextQuestGame/reiniciar">
             <input type="submit" value="Reiniciar desafío">
         </form>

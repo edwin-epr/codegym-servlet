@@ -23,7 +23,7 @@ public class ControladorIniciarJuego extends HttpServlet {
                 "Tengo para ti las siguientes píldoras:",
                 false,
                 "Pildora Azul: recuperar mis memorias.",
-                "Pildora roja: quedarme sin recuerdos pasados."
+                "Pildora roja: quedarme sin recuerdos."
         );
         req.setAttribute("template", paginaInicialJuego);
         req.getSession().setAttribute("nombreJugador", nombreJugador);

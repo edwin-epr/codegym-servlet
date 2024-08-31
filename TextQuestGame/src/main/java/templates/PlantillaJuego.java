@@ -7,7 +7,7 @@ public class PlantillaJuego {
     private String leyendaPagina;
     private boolean opcionEscogida;
     private String opcionSi;
-    private String OpcionNo;
+    private String opcionNo;
 
     private Map<String, PlantillaJuego> reglasDecisiones;
 
@@ -16,7 +16,27 @@ public class PlantillaJuego {
         this.leyendaPagina = leyendaPagina;
         this.opcionEscogida = opcionEscogida;
         this.opcionSi = opcionSi;
-        OpcionNo = opcionNo;
+        this.opcionNo = opcionNo;
+    }
+
+    public String getEncabezadoPagina() {
+        return encabezadoPagina;
+    }
+
+    public String getLeyendaPagina() {
+        return leyendaPagina;
+    }
+
+    public boolean isOpcionEscogida() {
+        return opcionEscogida;
+    }
+
+    public String getOpcionSi() {
+        return opcionSi;
+    }
+
+    public String getOpcionNo() {
+        return opcionNo;
     }
 
     @Override
@@ -26,7 +46,7 @@ public class PlantillaJuego {
                 ", leyendaPagina='" + leyendaPagina + '\'' +
                 ", opcionEscogida=" + opcionEscogida +
                 ", opcionSi='" + opcionSi + '\'' +
-                ", OpcionNo='" + OpcionNo + '\'' +
+                ", opcionNo='" + opcionNo + '\'' +
                 '}';
     }
 }

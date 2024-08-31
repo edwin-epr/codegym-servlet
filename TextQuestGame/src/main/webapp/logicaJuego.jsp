@@ -8,27 +8,16 @@
         <meta charset="UTF-8">
     </head>
     <body>
-        <%
-            String nombreJugador = (String) session.getAttribute("nombreJugador");
-            if (nombreJugador != null && !nombreJugador.isEmpty()) {
-        %>
-        <h2><%= nombreJugador %>, bienvenido a los Juegos del Hambre!</h2>
-        <p>Edición CodeGym!</p>
-        <%
-            } else {
-        %>
-            <h2>Bienvenido extraño a los juegos del hambre!</h2>
-        <%
-            }
-        %>
-        <h3>Has perdido la memoria. Aceptas un desafío para poder recuperarla?</h3>
+        <h2><c:out value="${template.encabezadoPagina}"/></h2>
+        <c:out value="${template.leyendaPagina}"/>
+        <br>
         <form method="POST" action="/TextQuestGame/desafio">
             <input type="radio" id="acepto" name="decisionTomada" value="true">
-            <label for="acepto">Acepto! Quiero recuperar mis recuerdos.</label><br>
+            <label for="acepto"><c:out value="${template.opcionSi}"/></label><br>
             <input type="radio" id="noAcepto" name="decisionTomada" value="false">
-            <label for="noAcepto">Decido crear nuevos recuerdos.</label><br>
+            <label for="noAcepto"><c:out value="${template.opcionNo}"/></label><br>
             <br>
-            <input type="submit" value="Llévame al desafío">
+            <input type="submit" value="Continuar...">
         </form>
     </body>
 </html>

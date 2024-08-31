@@ -41,6 +41,9 @@
                 educativo como recreativo.
             </p>
 
+            <h2>Bienvenido extraño a la Matrix!</h2>
+            <p>Edición CodeGym!</p>
+
             <form method="GET" action="/TextQuestGame/iniciarjuego">
                   <label for="nombreJugador">Escribe tu nombre de jugador:</label></br>
                   <input type="text" id="nombreJugador" name="nombreJugador" required>

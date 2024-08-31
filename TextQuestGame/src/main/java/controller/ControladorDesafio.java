@@ -23,9 +23,9 @@ public class ControladorDesafio extends HttpServlet {
             if (desafioAceptado) {
                 req.getRequestDispatcher("logicaJuego.jsp").forward(req, resp);
             } else {
-                req.getSession().setAttribute("mensajeEncabezado", " ha tomado una decisión:");
-                req.getSession().setAttribute("mensajeEstado", "Ha rechazado el desafío");
-                resp.sendRedirect("logicaFinJuego.jsp");
+                req.setAttribute("mensajeEncabezado", " ha tomado una decisión:");
+                req.setAttribute("mensajeEstado", "Ha rechazado el desafío");
+                req.getRequestDispatcher("logicaFinJuego.jsp").forward(req,resp);
             }
         } catch (IOException | ServletException exception) {
             throw new RuntimeException(exception);
