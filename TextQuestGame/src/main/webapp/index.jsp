@@ -41,8 +41,10 @@
                 educativo como recreativo.
             </p>
 
-            <form method="GET" action="/ServletIniciarJuego">
-                 <input type="submit" value="Enviar">
+            <form method="GET" action="/TextQuestGame/iniciarjuego">
+                  <label for="nombreJugador">Escribe tu nombre de jugador:</label></br>
+                  <input type="text" id="nombreJugador" name="nombreJugador" required>
+                 <input type="submit" value="Entrar al juego">
             </form>
     </body>
 </html>
