@@ -7,8 +7,8 @@
         <meta charset="UTF-8">
     </head>
     <body>
-        <h2><c:out value="${nombreJugador}"/> <c:out value="${mensajeEncabezado}"/></h2>
-        <h3><c:out value="${mensajeEstado}"/></h4>
+        <h2><c:out value="${nombreJugador}"/> <c:out value="${respuesta.encabezadoPagina}"/></h2>
+        <h3><c:out value="${respuesta.razonFinJuego}"/></h4>
         <form method="GET" action="/TextQuestGame/reiniciar">
             <input type="submit" value="Reiniciar desafío">
         </form>

@@ -5,7 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import templates.PlantillaJuego;
+import templates.EstadoSiguienteJuego;
 
 import java.io.IOException;
 
@@ -18,14 +18,13 @@ public class ControladorIniciarJuego extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
         String nombreJugador = req.getParameter("nombreJugador");
-        PlantillaJuego paginaInicialJuego = new PlantillaJuego(
-                nombreJugador + " has perdido la memoria. Aceptas el desafío para poder recuperarla?",
+        EstadoSiguienteJuego paginaInicialJuego = new EstadoSiguienteJuego(
+                " has perdido la memoria. Aceptas el desafío para poder recuperarla?",
                 "Tengo para ti las siguientes píldoras:",
-                false,
                 "Pildora Azul: recuperar mis memorias.",
                 "Pildora roja: quedarme sin recuerdos."
         );
-        req.setAttribute("template", paginaInicialJuego);
+        req.setAttribute("respuesta", paginaInicialJuego);
         req.getSession().setAttribute("nombreJugador", nombreJugador);
         try {
             req.getRequestDispatcher("logicaJuego.jsp").forward(req,resp);
