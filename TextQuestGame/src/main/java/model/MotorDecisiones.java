@@ -4,23 +4,48 @@ import templates.EstadoSiguienteJuego;
 
 public class MotorDecisiones {
 
-    private int contadorContinuar;
+    private int pasoActual;
 
     public MotorDecisiones() {
-        contadorContinuar = 0;
+        pasoActual = 0;
     }
 
     public EstadoSiguienteJuego procesarEleccion(boolean eleccion) {
-        if (!eleccion) {
-            return new EstadoSiguienteJuego(" ha tomado una decisión:",
-                    "Ha rechazado el desafío.");
+        if (pasoActual == 0) {
+            if (!eleccion) {
+                return new EstadoSiguienteJuego(" ha tomado una decisión:",
+                        "Ha escogido la pildora roja. Seguirás en la Matrix.");
+            } else {
+                pasoActual++;
+                return new EstadoSiguienteJuego(" has aceptado el desafío.",
+                        "Quieres subir a la oficina de Morfeo?",
+                        "Subir a hablar con Morfeo.",
+                        "No platicar con Morfeo.");
+            }
         }
-        contadorContinuar++;
-        if (contadorContinuar == 1) {
-            return new EstadoSiguienteJuego(" has aceptado el desafío.",
-                    "Quieres subir al puente del capitan?",
-                    "Subir al puente.",
-                    "No subir al puente.");
+        if (pasoActual == 1) {
+            if (!eleccion) {
+                pasoActual = 0;
+                return new EstadoSiguienteJuego(" te han devuelto a la Matrix!",
+                        "Te has rehusado a salir de ella.");
+            } else {
+                pasoActual++;
+                return new EstadoSiguienteJuego(" has subido al puente.",
+                        "Qué es lo que quieres?",
+                        "Descubrir la verdad y salir de la matrix.",
+                        "Seguir en la matrix.");
+            }
+        }
+        if (pasoActual == 2) {
+            if (!eleccion) {
+                pasoActual = 0;
+                return new EstadoSiguienteJuego(" te han regresado a la Matrix!",
+                        "Has querido mentir a la resistencia.");
+            } else {
+                pasoActual = 0;
+                return new EstadoSiguienteJuego(" has logrado salir de la Matrix!",
+                        "Bienvenido al mundo real!");
+            }
         }
         return null;
     }
