@@ -7,10 +7,10 @@ public class EstadoSiguienteJuego  {
     private String opcionNo;
     private String razonFinJuego;
     private String redirigirA;
-    private boolean esEstadoFinJuego;
+    private boolean esFinJuego;
 
     public EstadoSiguienteJuego(String encabezadoPagina, String razonFinJuego) {
-        this.esEstadoFinJuego = true;
+        this.esFinJuego = true;
         this.encabezadoPagina = encabezadoPagina;
         this.razonFinJuego = razonFinJuego;
         this.redirigirA = "logicaFinJuego.jsp";
@@ -21,7 +21,7 @@ public class EstadoSiguienteJuego  {
         this.leyendaPagina = leyendaPagina;
         this.opcionSi = opcionSi;
         this.opcionNo = opcionNo;
-        this.esEstadoFinJuego = false;
+        this.esFinJuego = false;
         this.redirigirA = "logicaJuego.jsp";
     }
 
@@ -49,8 +49,8 @@ public class EstadoSiguienteJuego  {
         return redirigirA;
     }
 
-    public boolean getEsEstadoFinJuego() {
-        return this.esEstadoFinJuego;
+    public boolean getEsFinJuego() {
+        return this.esFinJuego;
     }
 
 }

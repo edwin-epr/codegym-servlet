@@ -19,10 +19,10 @@ public class ControladorIniciarJuego extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
         String nombreJugador = req.getParameter("nombreJugador");
         EstadoSiguienteJuego paginaInicialJuego = new EstadoSiguienteJuego(
-                " has perdido la memoria. Aceptas el desafío para poder recuperarla?",
-                "Tengo para ti las siguientes píldoras:",
-                "Pildora Azul: recuperar mis memorias.",
-                "Pildora roja: quedarme sin recuerdos."
+                " te han mentido mucho tiempo. Aceptas el desafío para descubrir la verdad?",
+                "Morfeo tiene para ti las siguientes píldoras:",
+                "Pildora Azul: conocer la verdad.",
+                "Pildora roja: seguir en la mentira."
         );
         req.setAttribute("respuesta", paginaInicialJuego);
         req.getSession().setAttribute("nombreJugador", nombreJugador);

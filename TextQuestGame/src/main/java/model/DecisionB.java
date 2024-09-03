@@ -2,17 +2,17 @@ package model;
 
 import templates.EstadoSiguienteJuego;
 
-public class DecisionB implements Regla {
+public class DecisionB implements Decision {
     @Override
     public EstadoSiguienteJuego procesarEleccion(boolean eleccion) {
         if (!eleccion) {
             return new EstadoSiguienteJuego(" te han devuelto a la Matrix!",
-                    "Te has rehusado a salir de ella.");
+                    "Te has dejado engañar por el agente Smith.");
         } else {
-            return new EstadoSiguienteJuego(" has subido al puente.",
-                    "Qué es lo que quieres?",
-                    "Descubrir la verdad y salir de la matrix.",
-                    "Seguir en la matrix.");
+            return new EstadoSiguienteJuego(", la Oráculo te ha informado de todo!",
+                    "Qué es lo que quieres hacer?",
+                    "Contar la verdad y vivir en la realidad.",
+                    "Ocultar la verdad y seguir en la matrix.");
         }
     }
 }

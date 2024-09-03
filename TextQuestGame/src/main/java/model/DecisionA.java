@@ -2,17 +2,17 @@ package model;
 
 import templates.EstadoSiguienteJuego;
 
-public class DecisionA implements Regla {
+public class DecisionA implements Decision {
     @Override
     public EstadoSiguienteJuego procesarEleccion(boolean eleccion) {
         if (!eleccion) {
-            return new EstadoSiguienteJuego(" ha tomado una decisión:",
-                    "Ha escogido la pildora roja. Seguirás en la Matrix.");
+            return new EstadoSiguienteJuego(" ha escogido la píldora roja!",
+                    "Seguirás encerrado en la Matrix.");
         } else {
-            return new EstadoSiguienteJuego(" has aceptado el desafío.",
-                    "Quieres subir a la oficina de Morfeo?",
-                    "Subir a hablar con Morfeo.",
-                    "No platicar con Morfeo.");
+            return new EstadoSiguienteJuego("  estás apunto de conocer un gran secreto!",
+                    "Quiéres ir a platicar con el Oráculo?",
+                    "Ir a hablar con el Oráculo.",
+                    "No quiero conocer al Oráculo.");
         }
     }
 }
