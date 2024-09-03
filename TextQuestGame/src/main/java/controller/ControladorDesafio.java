@@ -27,7 +27,7 @@ public class ControladorDesafio extends HttpServlet {
         EstadoSiguienteJuego estadoSiguiente = procesadorElecciones.procesarEleccion(desafioAceptado);
         try {
             req.setAttribute("respuesta", estadoSiguiente);
-            req.getRequestDispatcher(estadoSiguiente.getRederigirA()).forward(req,resp);
+            req.getRequestDispatcher(estadoSiguiente.getRedirigirA()).forward(req,resp);
         } catch (IOException | ServletException exception) {
             throw new RuntimeException(exception);
         }
