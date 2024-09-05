@@ -1,5 +1,7 @@
 package templates;
 
+import java.util.Objects;
+
 public class EstadoSiguienteJuego  {
     private String encabezadoPagina;
     private String leyendaPagina;
@@ -53,4 +55,16 @@ public class EstadoSiguienteJuego  {
         return this.esFinJuego;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof EstadoSiguienteJuego)) return false;
+        EstadoSiguienteJuego that = (EstadoSiguienteJuego) o;
+        return getEsFinJuego() == that.getEsFinJuego() && Objects.equals(getEncabezadoPagina(), that.getEncabezadoPagina()) && Objects.equals(getLeyendaPagina(), that.getLeyendaPagina()) && Objects.equals(getOpcionSi(), that.getOpcionSi()) && Objects.equals(getOpcionNo(), that.getOpcionNo()) && Objects.equals(getRazonFinJuego(), that.getRazonFinJuego()) && Objects.equals(getRedirigirA(), that.getRedirigirA());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getEncabezadoPagina(), getLeyendaPagina(), getOpcionSi(), getOpcionNo(), getRazonFinJuego(), getRedirigirA(), getEsFinJuego());
+    }
 }

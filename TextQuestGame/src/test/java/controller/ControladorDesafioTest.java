@@ -7,17 +7,19 @@ import jakarta.servlet.http.HttpServletResponse;
 import model.MotorDecisiones;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 import templates.EstadoSiguienteJuego;
 
 import java.io.IOException;
 
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.*;
 
+@ExtendWith(MockitoExtension.class)
 public class ControladorDesafioTest {
 
     @InjectMocks
@@ -33,11 +35,11 @@ public class ControladorDesafioTest {
     private HttpServletResponse response;
 
     @Mock
-    private RequestDispatcher requestDispatcher;
+    private RequestDispatcher dispatcher;
 
     @BeforeEach
     public void configuracionInicial() throws ServletException {
-        MockitoAnnotations.openMocks(this);
+        when(request.getRequestDispatcher(anyString())).thenReturn(dispatcher);
         controladorDesafio.init();
     }
 
@@ -46,19 +48,34 @@ public class ControladorDesafioTest {
         // Preparar los mocks
         when(request.getParameter("decisionTomada")).thenReturn("true");
 
-        EstadoSiguienteJuego estadoSiguienteEsperado = new EstadoSiguienteJuego("  estás apunto de conocer un gran secreto!",
+        EstadoSiguienteJuego estadoSiguiente = new EstadoSiguienteJuego("  estás apunto de conocer un gran secreto!",
                 "Quiéres ir a platicar con el Oráculo?",
                 "Ir a hablar con el Oráculo.",
                 "No quiero conocer al Oráculo.");
-        when(motorDecisiones.procesarEleccion(true)).thenReturn(estadoSiguienteEsperado);
-        when(request.getRequestDispatcher(anyString())).thenReturn(requestDispatcher);
 
         // Ejecutar el método
         controladorDesafio.doPost(request, response);
 
         // Verificar que se realizó la redirección y se setearon los atributos correctamente
-        verify(request).setAttribute("respuesta", estadoSiguienteEsperado);
+        verify(request).setAttribute(eq("respuesta"), eq(estadoSiguiente));
         verify(request).getRequestDispatcher("logicaJuego.jsp");
-        verify(request.getRequestDispatcher("logicaJuego.jsp")).forward(request, response);
+        verify(dispatcher).forward(request, response);
+    }
+
+    @Test
+    public void testDoPostDesafioAceptadoFalse() throws ServletException, IOException {
+        // Preparar los mocks
+        when(request.getParameter("decisionTomada")).thenReturn("false");
+
+        EstadoSiguienteJuego estadoSiguiente = new EstadoSiguienteJuego(" ha escogido la píldora roja!",
+                "Seguirás encerrado en la Matrix.");
+
+        // Ejecutar el método
+        controladorDesafio.doPost(request, response);
+
+        // Verificar que se realizó la redirección y se setearon los atributos correctamente
+        verify(request).setAttribute(eq("respuesta"), eq(estadoSiguiente));
+        verify(request).getRequestDispatcher("logicaFinJuego.jsp");
+        verify(dispatcher).forward(request, response);
     }
 }
