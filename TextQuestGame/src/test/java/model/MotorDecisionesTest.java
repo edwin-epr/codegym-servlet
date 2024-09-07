@@ -135,7 +135,7 @@ public class MotorDecisionesTest {
         int estadoActualEsperado = 3;
 
         // when
-        EstadoSiguienteJuego estadoSiguienteObtenido = motorDecisiones.procesarEleccion(Mockito.anyBoolean());
+        EstadoSiguienteJuego estadoSiguienteObtenido = motorDecisiones.procesarEleccion(false);
         int estadoActualObtenido = motorDecisiones.getEstadoActual();
 
         // then
